@@ -19,11 +19,16 @@ import constants.ATConstants.EWindButtons;
 
 public class ATFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
+	
+	private ATPanel videoPanel;
 
 	public ATFrame() {
 		this.setSize(ATConstants.FRAME_WIDTH, ATConstants.FRAME_HEIGHT);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(null);
+		
+		this.videoPanel = new ATPanel();
+		this.videoPanel.init();
 		
 		int posX = ATConstants.BUTTON_POSX, posY = ATConstants.BUTTON_POSY, width = ATConstants.BUTTON_WIDTH, height = ATConstants.BUTTON_HEIGHT;
 		ActionHandler actionListener = new ActionHandler();
@@ -96,7 +101,7 @@ public class ATFrame extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			try {
 				BufferedWriter out = new BufferedWriter(new FileWriter(ATConstants.FILEPATH));
-				out.write(e.getActionCommand().toString());
+				out.write(e.getActionCommand());
 			} catch (IOException err) {
 				err.printStackTrace();
 			}

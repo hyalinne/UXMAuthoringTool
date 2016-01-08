@@ -9,6 +9,9 @@ import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 import constants.ATConstants;
 import constants.ATConstants.ELabel;
@@ -28,7 +31,19 @@ public class ATFrame extends JFrame {
 		this.setLayout(null);
 		
 		this.videoPanel = new ATPanel();
-		this.videoPanel.init();
+		
+		//메뉴바 만들기
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		JMenu fileMenu = new JMenu("파일");
+		JMenu editMenu = new JMenu("편집");
+		menuBar.add(fileMenu);
+        menuBar.add(editMenu);
+        JMenuItem openAction = new JMenuItem("파일오픈");
+        JMenuItem exitAction = new JMenuItem("종료");
+        fileMenu.add(openAction);
+        fileMenu.add(exitAction);
+		this.add(menuBar);
 		
 		int posX = ATConstants.BUTTON_POSX, posY = ATConstants.BUTTON_POSY, width = ATConstants.BUTTON_WIDTH, height = ATConstants.BUTTON_HEIGHT;
 		ActionHandler actionListener = new ActionHandler();
@@ -101,7 +116,7 @@ public class ATFrame extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			try {
 				BufferedWriter out = new BufferedWriter(new FileWriter(ATConstants.FILEPATH));
-				out.write(e.getActionCommand());
+				out.write(e.getActionCommand().toString());
 			} catch (IOException err) {
 				err.printStackTrace();
 			}

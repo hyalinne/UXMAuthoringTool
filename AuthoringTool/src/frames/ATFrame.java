@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -25,9 +24,7 @@ import constants.ATConstants.EWindButtons;
 public class ATFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
-	private ArrayList<String[]> effects;
 	private BufferedWriter out;
-	
 	private ATPanel videoPanel;
 	
 	private int pts;

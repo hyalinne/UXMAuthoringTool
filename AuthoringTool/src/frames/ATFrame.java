@@ -149,6 +149,30 @@ public class ATFrame extends JFrame {
 				out.write("\t<Effect xsi:type=\"sev:WindType\" intensity-value=\"" + 8.0 + "\" intensity-range=\"0.00001 12.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
 			} else if(command.equals("wind3")) {
 				out.write("\t<Effect xsi:type=\"sev:WindType\" intensity-value=\"" + 12.0 + "\" intensity-range=\"0.00001 12.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
+			} else if(command.equals("noLight")) {
+				out.write("\t<Effect xsi:type=\"sev:LightType\" active=\"false\" si:pts=\"" + pts + "\"/>\n");
+			} else if(command.equals("red")) {
+				out.write("\t<Effect xsi:type=\"sev:LightType\" color=\"" + "red" + "\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
+			} else if(command.equals("blue")) {
+				out.write("\t<Effect xsi:type=\"sev:LightType\" color=\"" + "blue" + "\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
+			} else if(command.equals("green")) {
+				out.write("\t<Effect xsi:type=\"sev:LightType\" color=\"" + "green" + "\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
+			} else if(command.equals("vib0")) {
+				out.write("\t<Effect xsi:type=\"sev:VibrationType\" active=\"false\" si:pts=\"" + pts + "\"/>\n");
+			} else if(command.equals("vib1")) {
+				out.write("\t<Effect xsi:type=\"sev:VibrationType\" intensity-value=\"" + 10.0 + "\" intensity-range=\"0.00001 50.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
+			} else if(command.equals("vib2")) {
+				out.write("\t<Effect xsi:type=\"sev:VibrationType\" intensity-value=\"" + 30.0 + "\" intensity-range=\"0.00001 50.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
+			} else if(command.equals("vib3")) {
+				out.write("\t<Effect xsi:type=\"sev:VibrationType\" intensity-value=\"" + 50.0 + "\" intensity-range=\"0.00001 50.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
+			} else if(command.equals("noScent")) {
+				out.write("\t<Effect xsi:type=\"sev:ScentType\" active=\"false\" si:pts=\"" + pts + "\"/>\n");
+			} else if(command.equals("popcorn")) {
+				out.write("\t<Effect xsi:type=\"sev:ScentType\" intensity-value=\"100.0\" intensity-range=\"0.00001 100.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
+			} else if(command.equals("gunpowder")) {
+				out.write("\t<Effect xsi:type=\"sev:ScentType\" intensity-value=\"100.0\" intensity-range=\"0.00001 100.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
+			} else if(command.equals("flower")) {
+				out.write("\t<Effect xsi:type=\"sev:ScentType\" intensity-value=\"100.0\" intensity-range=\"0.00001 100.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
 			}
 		} catch (IOException err) {
 			err.printStackTrace();

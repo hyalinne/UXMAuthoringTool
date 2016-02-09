@@ -18,7 +18,8 @@ public class ATConstants {
 	public static int LABEL_POSY = 120;
 	public static int LABEL_SPACE = 80;
 	
-	public static String FILEPATH = "./workspace/file.ini";
+	public static String FILEPATH = "./workspace/SEM.xml";
+	
 	// Button Group
 	public static enum ELabel {
 		wind("바람"),
@@ -34,10 +35,10 @@ public class ATConstants {
 		public String getName() { return this.name;}
 	}
 	public static enum EWindButtons {
-		noEffect("없음"),
-		first("1"),
-		second("2"),
-		third("3");
+		wind0("없음"),
+		wind1("1"),
+		wind2("2"),
+		wind3("3");
 		
 		private String name;
 		private EWindButtons(String name) {
@@ -48,7 +49,7 @@ public class ATConstants {
 	}
 	
 	public static enum ELightButtons {
-		noEffect("없음"),
+		noLight("없음"),
 		red("빨강"),
 		blue("파랑"),
 		green("초록");
@@ -62,10 +63,10 @@ public class ATConstants {
 	}
 	
 	public static enum EVibrationButtons {
-		noEffect("없음"),
-		first("1"),
-		second("2"),
-		third("3");
+		vib0("없음"),
+		vib1("1"),
+		vib2("2"),
+		vib3("3");
 		
 		private String name;
 		private EVibrationButtons(String name) {
@@ -75,14 +76,14 @@ public class ATConstants {
 		public String getName() { return this.name; }
 	}
 	
-	public static enum ESmellButtons {
-		noEffect("없음"),
-		popCorn("팝콘"),
-		gunPower("화약"),
+	public static enum EScentButtons {
+		noScent("없음"),
+		popcorn("팝콘"),
+		gunpower("화약"),
 		flower("꽃");
 		
 		private String name;
-		private ESmellButtons(String name) {
+		private EScentButtons(String name) {
 			this.name = name;
 		}
 		

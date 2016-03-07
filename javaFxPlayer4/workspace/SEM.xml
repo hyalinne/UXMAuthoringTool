@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<SEM xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:mpeg:mpeg-v:2010:01-SEDL-NS" xmlns:sev="urn:mpeg:mpeg-v:2010:01-SEV-NS" xmlns:mpeg7="urn:mpeg:mpeg7:schema:2004" xmlns:ct="urn:mpeg:mpeg-v:2010:01-CT-NS" xmlns:si="urn:mpeg:mpeg21:2003:01-DIA-XSI-NS" xsi:schemaLocation="urn:mpeg:mpeg-v:2010:01-SEV-NS MPEG-V-SEV.xsd" si:timeScale="1">
-
-	<Effect xsi:type="sev:WindType" intensity-value="4.0" intensity-range="0.00001 12.0" active="true" si:pts="1.02"/>
-	<Effect xsi:type="sev:WindType" active="false" si:pts="1.61"/>
-	<Effect xsi:type="sev:LightType" color="red" intensity-value="16000.0" intensity-range="0.00001 32000.0" active="true" si:pts="61.773660933"/>
-	<Effect xsi:type="sev:LightType" active="false" si:pts="62.353660933"/>
-
-</SEM>

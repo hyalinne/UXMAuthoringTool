@@ -53,6 +53,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Toggle;
@@ -64,6 +65,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaPlayer.Status;
+import javafx.scene.image.*;
 import javafx.stage.FileChooser;
 import javafx.scene.media.MediaView;
 import javafx.util.Duration;
@@ -71,14 +73,10 @@ import javafx.util.Duration;
 import java.io.File;
 import java.io.IOException;
 
+
+
 import constants.ATConstants;
-import constants.ATConstants.ELabel;
 import constants.ATConstants.ELightButtons;
-import constants.ATConstants.EScentButtons;
-import constants.ATConstants.EVibrationButtons;
-import constants.ATConstants.EWindButtons;
-
-
 
 
 public class MediaControl extends BorderPane {
@@ -146,7 +144,7 @@ public class MediaControl extends BorderPane {
         BorderPane.setAlignment(mediaBar2, Pos.CENTER);
         BorderPane.setAlignment(radioBar, Pos.TOP_LEFT);
 
-        final Button playButton = new Button(">");
+        final Button playButton = new Button("▶");
         
         //xml 저장
         try {
@@ -212,7 +210,7 @@ public class MediaControl extends BorderPane {
         mp.setOnEndOfMedia(new Runnable() {
             public void run() {
                 if (!repeat) {
-                    playButton.setText(">");
+                    playButton.setText("▶");
                     stopRequested = true;
                     atEndOfMedia = true;
                 }
@@ -317,21 +315,24 @@ public class MediaControl extends BorderPane {
         
         mediaBar1.getChildren().add(volumeSlider);
 
-        
+
         // create radio button
        
         ToggleGroup windButtonGroup = new ToggleGroup();
-        Label windLabel = new Label("바람 효과");
+        Label windLabel = new Label("Wind");
         radioBar.getChildren().add(windLabel);
-        for(EWindButtons eButton:EWindButtons.values()){
-        	
-        	RadioButton button = new RadioButton(eButton.getName());
-        	button.setUserData(eButton.getName());
-        	button.setToggleGroup(windButtonGroup);
-        	button.setBorder(getBorder()); 	
-        	radioBox1.getChildren().add(button);
-        	radioBox1.setSpacing(10);
-        }
+        ToggleButton windStartButton = new ToggleButton("▶");
+        windStartButton.setUserData(ATConstants.STARTWIND);
+        windStartButton.setToggleGroup(windButtonGroup);
+        windStartButton.setBorder(getBorder());
+        radioBox1.getChildren().add(windStartButton);
+        radioBox1.setSpacing(10);
+        ToggleButton windStopButton = new ToggleButton("||");
+        windStopButton.setUserData(ATConstants.STOPWIND);
+        windStopButton.setToggleGroup(windButtonGroup);
+        windStopButton.setBorder(getBorder());
+        radioBox1.getChildren().add(windStopButton);
+        radioBox1.setSpacing(10);
         radioBar.getChildren().add(radioBox1);	
         
         windButtonGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
@@ -339,26 +340,18 @@ public class MediaControl extends BorderPane {
 			@Override
 			public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
 				// TODO Auto-generated method stub
-				if(newValue.getUserData().toString().equals("없음")) {
-					write("wind0");
-				} else if(newValue.getUserData().toString().equals("1")) {
-					write("wind1");
-				} else if(newValue.getUserData().toString().equals("2")) {
-					write("wind2");
-				} else if(newValue.getUserData().toString().equals("3")) {
-					write("wind3");
-				}
+				write(newValue.getUserData().toString());
 			}
         	
 		});
         
         
-        Label lightLabel = new Label("빛 효과");
+        Label lightLabel = new Label("Lighting");
         radioBar.getChildren().add(lightLabel);        
         ToggleGroup lightButtonGroup = new ToggleGroup();
         for(ELightButtons eButton:ELightButtons.values()){
         	
-        	RadioButton button = new RadioButton(eButton.getName());
+        	ToggleButton button = new ToggleButton(eButton.getName());
         	button.setUserData(eButton.getName());
         	button.setToggleGroup(lightButtonGroup);
         	button.setBorder(getBorder()); 	
@@ -372,31 +365,26 @@ public class MediaControl extends BorderPane {
 			@Override
 			public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
 				// TODO Auto-generated method stub
-				if(newValue.getUserData().toString().equals("없음")) {
-					write("noLight");
-				} else if(newValue.getUserData().toString().equals("빨강")) {
-					write("red");
-				} else if(newValue.getUserData().toString().equals("파랑")) {
-					write("blue");
-				} else if(newValue.getUserData().toString().equals("초록")) {
-					write("green");
-				}
+				write(newValue.getUserData().toString());
 			}
         	
 		});
         
-        Label vibrationLabel = new Label("진동 효과");
+        Label vibrationLabel = new Label("Vibration");
         radioBar.getChildren().add(vibrationLabel);
         ToggleGroup vibrationButtonGroup = new ToggleGroup();
-        for(EVibrationButtons eButton:EVibrationButtons.values()){
-        	
-        	RadioButton button = new RadioButton(eButton.getName());
-        	button.setUserData(eButton.getName());
-        	button.setToggleGroup(vibrationButtonGroup);
-        	button.setBorder(getBorder()); 	
-        	radioBox3.getChildren().add(button);
-        	radioBox3.setSpacing(10);
-        }
+        ToggleButton vibStartButton = new ToggleButton("▶");
+        vibStartButton.setUserData(ATConstants.STARTVIB);
+        vibStartButton.setToggleGroup(vibrationButtonGroup);
+        vibStartButton.setBorder(getBorder());
+        radioBox3.getChildren().add(vibStartButton);
+        radioBox3.setSpacing(10);
+        ToggleButton vibStopButton = new ToggleButton("||");
+        vibStopButton.setUserData(ATConstants.STOPVIB);
+        vibStopButton.setToggleGroup(vibrationButtonGroup);
+        vibStopButton.setBorder(getBorder());
+        radioBox3.getChildren().add(vibStopButton);
+        radioBox3.setSpacing(10);
         radioBar.getChildren().add(radioBox3);
         
         vibrationButtonGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
@@ -404,31 +392,26 @@ public class MediaControl extends BorderPane {
 			@Override
 			public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
 				// TODO Auto-generated method stub
-				if(newValue.getUserData().toString().equals("없음")) {
-					write("vib0");
-				} else if(newValue.getUserData().toString().equals("1")) {
-					write("vib1");
-				} else if(newValue.getUserData().toString().equals("2")) {
-					write("vib2");
-				} else if(newValue.getUserData().toString().equals("3")) {
-					write("vib3");
-				}
+				write(newValue.getUserData().toString());
 			}
         	
 		});
         
-        Label scentLabel = new Label("향기 효과");
+        Label scentLabel = new Label("Scent");
         radioBar.getChildren().add(scentLabel);
         ToggleGroup scentButtonGroup = new ToggleGroup();
-        for(EScentButtons eButton:EScentButtons.values()){
-        	
-        	RadioButton button = new RadioButton(eButton.getName());
-        	button.setUserData(eButton.getName());
-        	button.setToggleGroup(scentButtonGroup);
-        	button.setBorder(getBorder()); 	
-        	radioBox4.getChildren().add(button);
-        	radioBox4.setSpacing(10);
-        }
+        ToggleButton scentStartButton = new ToggleButton("▶");
+        scentStartButton.setUserData(ATConstants.STARTSCENT);
+        scentStartButton.setToggleGroup(scentButtonGroup);
+        scentStartButton.setBorder(getBorder());
+        radioBox4.getChildren().add(scentStartButton);
+        radioBox4.setSpacing(10);
+        ToggleButton scentStopButton = new ToggleButton("||");
+        scentStopButton.setUserData(ATConstants.STOPSCENT);
+        scentStopButton.setToggleGroup(scentButtonGroup);
+        scentStopButton.setBorder(getBorder());
+        radioBox4.getChildren().add(scentStopButton);
+        radioBox4.setSpacing(10);
         radioBar.getChildren().add(radioBox4);
         
         scentButtonGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
@@ -436,15 +419,7 @@ public class MediaControl extends BorderPane {
 			@Override
 			public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
 				// TODO Auto-generated method stub
-				if(newValue.getUserData().toString().equals("없음")) {
-					write("noScent");
-				} else if(newValue.getUserData().toString().equals("팝콘")) {
-					write("popcorn");
-				} else if(newValue.getUserData().toString().equals("화약")) {
-					write("gunpowder");
-				} else if(newValue.getUserData().toString().equals("꽃")) {
-					write("flower");
-				}
+				write(newValue.getUserData().toString());
 			}
         	
 		});
@@ -472,7 +447,7 @@ public class MediaControl extends BorderPane {
 		this.setVisible(true);
 		this.pts = 0;
 		try {
-			out.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<SEM xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"urn:mpeg:mpeg-v:2010:01-SEDL-NS\" xmlns:sev=\"urn:mpeg:mpeg-v:2010:01-SEV-NS\" xmlns:mpeg7=\"urn:mpeg:mpeg7:schema:2004\" xmlns:ct=\"urn:mpeg:mpeg-v:2010:01-CT-NS\" xmlns:si=\"urn:mpeg:mpeg21:2003:01-DIA-XSI-NS\" xsi:schemaLocation=\"urn:mpeg:mpeg-v:2010:01-SEV-NS MPEG-V-SEV.xsd\" si:timeScale=\"1\">\n\n");
+			out.write(ATConstants.STARTTAG);
 		} catch (IOException err) {
 			err.printStackTrace();
 		}
@@ -485,38 +460,28 @@ public class MediaControl extends BorderPane {
     private void write(String command) {
     	bringPTS();
 		try {
-			if(command.equals("wind0")) {
-				out.write("\t<Effect xsi:type=\"sev:WindType\" active=\"false\" si:pts=\"" + pts + "\"/>\n");
-			} else if(command.equals("wind1")) {
-				out.write("\t<Effect xsi:type=\"sev:WindType\" intensity-value=\"" + 4.0 + "\" intensity-range=\"0.00001 12.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
-			} else if(command.equals("wind2")) {
-				out.write("\t<Effect xsi:type=\"sev:WindType\" intensity-value=\"" + 8.0 + "\" intensity-range=\"0.00001 12.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
-			} else if(command.equals("wind3")) {
-				out.write("\t<Effect xsi:type=\"sev:WindType\" intensity-value=\"" + 12.0 + "\" intensity-range=\"0.00001 12.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
+			if(command.equals(ATConstants.STOPWIND)) {
+				out.write(ATConstants.WIND_FALSE + pts + ATConstants.CLOSE);
+			} else if(command.equals(ATConstants.STARTWIND)) {
+				out.write(ATConstants.WIND_TRUE + pts + ATConstants.CLOSE);
 			} else if(command.equals("noLight")) {
-				out.write("\t<Effect xsi:type=\"sev:LightType\" active=\"false\" si:pts=\"" + pts + "\"/>\n");
+				out.write(ATConstants.LIGHT_FALSE + pts + ATConstants.CLOSE);
 			} else if(command.equals("red")) {
-				out.write("\t<Effect xsi:type=\"sev:LightType\" color=\"" + "red" + "\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
+				out.write(ATConstants.LIGHT_RED + pts + ATConstants.CLOSE);
 			} else if(command.equals("blue")) {
-				out.write("\t<Effect xsi:type=\"sev:LightType\" color=\"" + "blue" + "\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
+				out.write(ATConstants.LIGHT_BLUE + pts + ATConstants.CLOSE);
 			} else if(command.equals("green")) {
-				out.write("\t<Effect xsi:type=\"sev:LightType\" color=\"" + "green" + "\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
-			} else if(command.equals("vib0")) {
-				out.write("\t<Effect xsi:type=\"sev:VibrationType\" active=\"false\" si:pts=\"" + pts + "\"/>\n");
-			} else if(command.equals("vib1")) {
-				out.write("\t<Effect xsi:type=\"sev:VibrationType\" intensity-value=\"" + 10.0 + "\" intensity-range=\"0.00001 50.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
-			} else if(command.equals("vib2")) {
-				out.write("\t<Effect xsi:type=\"sev:VibrationType\" intensity-value=\"" + 30.0 + "\" intensity-range=\"0.00001 50.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
-			} else if(command.equals("vib3")) {
-				out.write("\t<Effect xsi:type=\"sev:VibrationType\" intensity-value=\"" + 50.0 + "\" intensity-range=\"0.00001 50.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
-			} else if(command.equals("noScent")) {
-				out.write("\t<Effect xsi:type=\"sev:ScentType\" active=\"false\" si:pts=\"" + pts + "\"/>\n");
-			} else if(command.equals("popcorn")) {
-				out.write("\t<Effect xsi:type=\"sev:ScentType\" intensity-value=\"100.0\" intensity-range=\"0.00001 100.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
-			} else if(command.equals("gunpowder")) {
-				out.write("\t<Effect xsi:type=\"sev:ScentType\" intensity-value=\"100.0\" intensity-range=\"0.00001 100.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
-			} else if(command.equals("flower")) {
-				out.write("\t<Effect xsi:type=\"sev:ScentType\" intensity-value=\"100.0\" intensity-range=\"0.00001 100.0\" active=\"true\" si:pts=\"" + pts + "\"/>\n");
+				out.write(ATConstants.LIGHT_GREEN + pts + ATConstants.CLOSE);
+			} else if(command.equals(ATConstants.STOPVIB)) {
+				out.write(ATConstants.VIB_FALSE + pts + ATConstants.CLOSE);
+			} else if(command.equals(ATConstants.STARTVIB)) {
+				out.write(ATConstants.VIB_TRUE + pts + ATConstants.CLOSE);
+			}  else if(command.equals(ATConstants.STOPSCENT)) {
+				out.write(ATConstants.SCENT_FALSE + pts + ATConstants.CLOSE);
+			} else if(command.equals(ATConstants.STARTSCENT)) {
+				out.write(ATConstants.SCENT_TRUE + pts + ATConstants.CLOSE);
+			} else {
+				// empty
 			}
 		} catch (IOException err) {
 			err.printStackTrace();
@@ -525,7 +490,7 @@ public class MediaControl extends BorderPane {
 	
 	private void saveXML() {
 		try {
-			out.write("\n</SEM>");
+			out.write(ATConstants.ENDTAG);
 			out.close();
 		} catch (IOException err) {
 			err.printStackTrace();

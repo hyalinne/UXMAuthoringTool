@@ -20,39 +20,40 @@ public class ATConstants {
 	
 	public static String FILEPATH = "./workspace/SEM.xml";
 	
-	// Button Group
-	public static enum ELabel {
-		wind("바람"),
-		light("빛"),
-		vibration("진동"),
-		smell("향기");
-		
-		private String name;
-		private ELabel(String name) {
-			this.name = name;
-		}
-		
-		public String getName() { return this.name;}
-	}
-	public static enum EWindButtons {
-		wind0("없음"),
-		wind1("1"),
-		wind2("2"),
-		wind3("3");
-		
-		private String name;
-		private EWindButtons(String name) {
-			this.name = name;
-		}
-		
-		public String getName() { return this.name; }
-	}
+	public static String STARTTAG = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<SEM xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"urn:mpeg:mpeg-v:2010:01-SEDL-NS\" xmlns:sev=\"urn:mpeg:mpeg-v:2010:01-SEV-NS\" xmlns:mpeg7=\"urn:mpeg:mpeg7:schema:2004\" xmlns:ct=\"urn:mpeg:mpeg-v:2010:01-CT-NS\" xmlns:si=\"urn:mpeg:mpeg21:2003:01-DIA-XSI-NS\" xsi:schemaLocation=\"urn:mpeg:mpeg-v:2010:01-SEV-NS MPEG-V-SEV.xsd\" si:timeScale=\"1\">\n\n";
+	public static String ENDTAG = "\n</SEM>";
+	
+	// Toggle Button	
+	public static String CLOSE = "\"/>\n";
+	public static String WIND_FALSE = "\t<Effect xsi:type=\"sev:WindType\" intensity-value=\"12.0\" intensity-range=\"0.00001 12.0\" activate=\"false\" si:pts=\"";
+	public static String WIND_TRUE = "\t<Effect xsi:type=\"sev:WindType\" intensity-value=\"12.0\" intensity-range=\"0.00001 12.0\" activate=\"true\" si:pts=\"";
+	
+	public static String LIGHT_FALSE = "\t<Effect xsi:type=\"sev:LightType\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" activate=\"false\" si:pts=\"";
+	public static String LIGHT_RED = "\t<Effect xsi:type=\"sev:LightType\" color=\"red\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" activate=\"true\" si:pts=\"";
+	public static String LIGHT_BLUE = "\t<Effect xsi:type=\"sev:LightType\" color=\"blue\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" activate=\"true\" si:pts=\"";
+	public static String LIGHT_GREEN = "\t<Effect xsi:type=\"sev:LightType\" color=\"green\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" activate=\"true\" si:pts=\"";
+	
+	public static String VIB_FALSE = "\t<Effect xsi:type=\"sev:VibrationType\" intensity-value=\" 10.0 \" intensity-range=\"0.00001 50.0\" activate=\"false\" si:pts=\"";
+	public static String VIB_TRUE = "\t<Effect xsi:type=\"sev:VibrationType\" intensity-value=\" 10.0 \" intensity-range=\"0.00001 50.0\" activate=\"true\" si:pts=\"";
+	
+	public static String SCENT_FALSE = "\t<Effect xsi:type=\"sev:ScentType\" intensity-value=\"100.0\" intensity-range=\"0.00001 100.0\" activate=\"false\" si:pts=\"";
+	public static String SCENT_TRUE = "\t<Effect xsi:type=\"sev:ScentType\" intensity-value=\"100.0\" intensity-range=\"0.00001 100.0\" activate=\"true\" si:pts=\"";
+			
+	
+	public static String STOPWIND = "wind0";
+	public static String STARTWIND = "wind1";
+	
+	public static String STOPVIB = "vib0";
+	public static String STARTVIB = "vib1";
+	
+	public static String STOPSCENT = "scent0";
+	public static String STARTSCENT = "scent1";
 	
 	public static enum ELightButtons {
-		noLight("없음"),
-		red("빨강"),
-		blue("파랑"),
-		green("초록");
+		red("RED"),
+		blue("BLUE"),
+		green("GREEN"),
+		noLight("||");
 		
 		private String name;
 		private ELightButtons(String name) {
@@ -62,31 +63,5 @@ public class ATConstants {
 		public String getName() { return this.name; }
 	}
 	
-	public static enum EVibrationButtons {
-		vib0("없음"),
-		vib1("1"),
-		vib2("2"),
-		vib3("3");
-		
-		private String name;
-		private EVibrationButtons(String name) {
-			this.name = name;
-		}
-		
-		public String getName() { return this.name; }
-	}
 	
-	public static enum EScentButtons {
-		noScent("없음"),
-		popcorn("팝콘"),
-		gunpower("화약"),
-		flower("꽃");
-		
-		private String name;
-		private EScentButtons(String name) {
-			this.name = name;
-		}
-		
-		public String getName() { return this.name; }
-	}
 }

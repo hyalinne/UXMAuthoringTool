@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SEM xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:mpeg:mpeg-v:2010:01-SEDL-NS" xmlns:sev="urn:mpeg:mpeg-v:2010:01-SEV-NS" xmlns:mpeg7="urn:mpeg:mpeg7:schema:2004" xmlns:ct="urn:mpeg:mpeg-v:2010:01-CT-NS" xmlns:si="urn:mpeg:mpeg21:2003:01-DIA-XSI-NS" xsi:schemaLocation="urn:mpeg:mpeg-v:2010:01-SEV-NS MPEG-V-SEV.xsd" si:timeScale="1">
+
+	<Effect xsi:type="sev:WindType" intensity-value="12.0" intensity-range="0.00001 12.0" activate="true" si:pts="2.94"/>
+	<Effect xsi:type="sev:WindType" intensity-value="12.0" intensity-range="0.00001 12.0" activate="false" si:pts="3.34"/>
+	<Effect xsi:type="sev:LightType" color="yellow" intensity-value="16000.0" intensity-range="0.00001 32000.0" activate="true" si:pts="3.77"/>
+	<Effect xsi:type="sev:LightType" color="yellow" intensity-value="16000.0" intensity-range="0.00001 32000.0" activate="false" si:pts="4.15"/>
+	<Effect xsi:type="sev:VibrationType" intensity-value=" 10.0 " intensity-range="0.00001 50.0" activate="true" si:pts="4.72"/>
+	<Effect xsi:type="sev:VibrationType" intensity-value=" 10.0 " intensity-range="0.00001 50.0" activate="false" si:pts="5.07"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="true" si:pts="5.57"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="6.19"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="true" si:pts="6.98"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="7.5"/>
+	<Effect xsi:type="sev:VibrationType" intensity-value=" 10.0 " intensity-range="0.00001 50.0" activate="true" si:pts="8.88"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="10.67"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="11.3"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="11.47"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="11.81"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="12.16"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="12.49"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="12.85"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="13.04"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="13.22"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="13.59"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="13.97"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="14.38"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="14.78"/>
+	<Effect xsi:type="sev:ScentType" intensity-value="100.0" intensity-range="0.00001 100.0" activate="false" si:pts="15.2"/>
+
+</SEM>

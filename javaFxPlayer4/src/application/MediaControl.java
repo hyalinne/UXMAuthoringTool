@@ -52,7 +52,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.Slider;
@@ -65,7 +64,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaPlayer.Status;
-import javafx.scene.image.*;
 import javafx.stage.FileChooser;
 import javafx.scene.media.MediaView;
 import javafx.util.Duration;
@@ -76,7 +74,6 @@ import java.io.IOException;
 
 
 import constants.ATConstants;
-import constants.ATConstants.ELightButtons;
 
 
 public class MediaControl extends BorderPane {
@@ -340,32 +337,39 @@ public class MediaControl extends BorderPane {
 			@Override
 			public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
 				// TODO Auto-generated method stub
-				write(newValue.getUserData().toString());
+				if(newValue != null) {
+					write(newValue.getUserData().toString());
+				}
 			}
         	
 		});
         
         
-        Label lightLabel = new Label("Lighting");
-        radioBar.getChildren().add(lightLabel);        
         ToggleGroup lightButtonGroup = new ToggleGroup();
-        for(ELightButtons eButton:ELightButtons.values()){
-        	
-        	ToggleButton button = new ToggleButton(eButton.getName());
-        	button.setUserData(eButton.getName());
-        	button.setToggleGroup(lightButtonGroup);
-        	button.setBorder(getBorder()); 	
-        	radioBox2.getChildren().add(button);
-        	radioBox2.setSpacing(10);
-        }
-        radioBar.getChildren().add(radioBox2);	
+        Label lightLabel = new Label("Lighting");
+        radioBar.getChildren().add(lightLabel);
+        ToggleButton lightStartButton = new ToggleButton("¢º");
+        lightStartButton.setUserData(ATConstants.STARTLIGHT);
+        lightStartButton.setToggleGroup(lightButtonGroup);
+        lightStartButton.setBorder(getBorder());
+        radioBox2.getChildren().add(lightStartButton);
+        radioBox2.setSpacing(10);
+        ToggleButton lightStopButton = new ToggleButton("||");
+        lightStopButton.setUserData(ATConstants.STOPLIGHT);
+        lightStopButton.setToggleGroup(lightButtonGroup);
+        lightStopButton.setBorder(getBorder());
+        radioBox2.getChildren().add(lightStopButton);
+        radioBox2.setSpacing(10);
+        radioBar.getChildren().add(radioBox2);
         
         lightButtonGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
 
 			@Override
 			public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
 				// TODO Auto-generated method stub
-				write(newValue.getUserData().toString());
+				if(newValue != null) {
+					write(newValue.getUserData().toString());
+				}
 			}
         	
 		});
@@ -392,7 +396,9 @@ public class MediaControl extends BorderPane {
 			@Override
 			public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
 				// TODO Auto-generated method stub
-				write(newValue.getUserData().toString());
+				if(newValue != null) {
+					write(newValue.getUserData().toString());
+				}
 			}
         	
 		});
@@ -419,7 +425,9 @@ public class MediaControl extends BorderPane {
 			@Override
 			public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
 				// TODO Auto-generated method stub
-				write(newValue.getUserData().toString());
+				if(newValue != null) {
+					write(newValue.getUserData().toString());
+				}
 			}
         	
 		});
@@ -464,14 +472,10 @@ public class MediaControl extends BorderPane {
 				out.write(ATConstants.WIND_FALSE + pts + ATConstants.CLOSE);
 			} else if(command.equals(ATConstants.STARTWIND)) {
 				out.write(ATConstants.WIND_TRUE + pts + ATConstants.CLOSE);
-			} else if(command.equals("noLight")) {
+			} else if(command.equals(ATConstants.STOPLIGHT)) {
 				out.write(ATConstants.LIGHT_FALSE + pts + ATConstants.CLOSE);
-			} else if(command.equals("red")) {
-				out.write(ATConstants.LIGHT_RED + pts + ATConstants.CLOSE);
-			} else if(command.equals("blue")) {
-				out.write(ATConstants.LIGHT_BLUE + pts + ATConstants.CLOSE);
-			} else if(command.equals("green")) {
-				out.write(ATConstants.LIGHT_GREEN + pts + ATConstants.CLOSE);
+			} else if(command.equals(ATConstants.STARTLIGHT)) {
+				out.write(ATConstants.LIGHT_TRUE + pts + ATConstants.CLOSE);
 			} else if(command.equals(ATConstants.STOPVIB)) {
 				out.write(ATConstants.VIB_FALSE + pts + ATConstants.CLOSE);
 			} else if(command.equals(ATConstants.STARTVIB)) {

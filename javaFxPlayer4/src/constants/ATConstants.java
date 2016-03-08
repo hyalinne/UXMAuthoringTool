@@ -28,40 +28,26 @@ public class ATConstants {
 	public static String WIND_FALSE = "\t<Effect xsi:type=\"sev:WindType\" intensity-value=\"12.0\" intensity-range=\"0.00001 12.0\" activate=\"false\" si:pts=\"";
 	public static String WIND_TRUE = "\t<Effect xsi:type=\"sev:WindType\" intensity-value=\"12.0\" intensity-range=\"0.00001 12.0\" activate=\"true\" si:pts=\"";
 	
-	public static String LIGHT_FALSE = "\t<Effect xsi:type=\"sev:LightType\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" activate=\"false\" si:pts=\"";
-	public static String LIGHT_RED = "\t<Effect xsi:type=\"sev:LightType\" color=\"red\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" activate=\"true\" si:pts=\"";
-	public static String LIGHT_BLUE = "\t<Effect xsi:type=\"sev:LightType\" color=\"blue\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" activate=\"true\" si:pts=\"";
-	public static String LIGHT_GREEN = "\t<Effect xsi:type=\"sev:LightType\" color=\"green\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" activate=\"true\" si:pts=\"";
+	public static String LIGHT_FALSE = "\t<Effect xsi:type=\"sev:LightType\" color=\"yellow\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" activate=\"false\" si:pts=\"";
+	public static String LIGHT_TRUE = "\t<Effect xsi:type=\"sev:LightType\" color=\"yellow\" intensity-value=\"16000.0\" intensity-range=\"0.00001 32000.0\" activate=\"true\" si:pts=\"";
 	
 	public static String VIB_FALSE = "\t<Effect xsi:type=\"sev:VibrationType\" intensity-value=\" 10.0 \" intensity-range=\"0.00001 50.0\" activate=\"false\" si:pts=\"";
 	public static String VIB_TRUE = "\t<Effect xsi:type=\"sev:VibrationType\" intensity-value=\" 10.0 \" intensity-range=\"0.00001 50.0\" activate=\"true\" si:pts=\"";
 	
 	public static String SCENT_FALSE = "\t<Effect xsi:type=\"sev:ScentType\" intensity-value=\"100.0\" intensity-range=\"0.00001 100.0\" activate=\"false\" si:pts=\"";
 	public static String SCENT_TRUE = "\t<Effect xsi:type=\"sev:ScentType\" intensity-value=\"100.0\" intensity-range=\"0.00001 100.0\" activate=\"true\" si:pts=\"";
-			
 	
 	public static String STOPWIND = "wind0";
 	public static String STARTWIND = "wind1";
+	
+	public static String STOPLIGHT = "light0";
+	public static String STARTLIGHT = "light1";
 	
 	public static String STOPVIB = "vib0";
 	public static String STARTVIB = "vib1";
 	
 	public static String STOPSCENT = "scent0";
 	public static String STARTSCENT = "scent1";
-	
-	public static enum ELightButtons {
-		red("RED"),
-		blue("BLUE"),
-		green("GREEN"),
-		noLight("||");
-		
-		private String name;
-		private ELightButtons(String name) {
-			this.name = name;
-		}
-		
-		public String getName() { return this.name; }
-	}
 	
 	
 }
